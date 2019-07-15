@@ -19,6 +19,6 @@ class HouseRent(models.Model):
     construcction_size = models.IntegerField()
     solar_size = models.IntegerField()
     price = models.FloatField()
-    city = models.CharField(max_length=4, choices=YEAR_IN_SCHOOL_CHOICES, default=FRESHMAN)
+    city = models.CharField(max_length=4, choices=CITIES_DOMINICAN_REPUBLIC, default=SD)
     # photos
     
