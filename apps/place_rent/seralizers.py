@@ -15,6 +15,6 @@ class HouseImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = HouseImage
         fields = (
-            'property_id',
+            'property_place',
             'image'
         )

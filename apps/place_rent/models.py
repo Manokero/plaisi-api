@@ -30,7 +30,7 @@ class HouseRent(models.Model):
         return self.title
 
 class HouseImage(models.Model):
-    property_id = models.ForeignKey(HouseRent, null=False, 
+    property_place = models.ForeignKey(HouseRent, null=False, 
         default=1, on_delete=models.DO_NOTHING)
     image = models.ImageField(upload_to=user_house_directory_path)
     uploaded_at = models.DateTimeField(auto_now_add=True)
