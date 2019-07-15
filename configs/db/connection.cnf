@@ -1,0 +1,6 @@
+[client]
+database = plaisi_db
+user = plaisi
+password = plaisidb07WCE!
+sql_mode = STRICT_TRANS_TABLES
+default-character-set = utf8

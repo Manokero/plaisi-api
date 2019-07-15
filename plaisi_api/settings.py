@@ -75,15 +75,26 @@ WSGI_APPLICATION = 'plaisi_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'mysql.connector.django',
+#         'NAME': 'plaisi_db',
+#         'USER': 'plaisi',
+#         'PASSWORD': 'plaisidb07WCE!',
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#         'sql_mode': 'STRICT_TRANS_TABLES'
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'mysql.connector.django',
         'OPTIONS': {
-            'read_file_default': 'config/db/connection.cnf'
+            'option_files': os.path.join(BASE_DIR, 'configs/db/connection.cnf')
         },
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
