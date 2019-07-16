@@ -11,38 +11,38 @@ class HouseRentView(viewsets.ModelViewSet):
     queryset = HouseRent.objects.all()
     serializer_class = HouseRentSerializer
 
-# class HouseImageView(viewsets.ModelViewSet):
-#     queryset = HouseImage.objects.all()
-#     serializer_class = HouseImageSerializer
-
-class ImageView(viewsets.ModelViewSet):
-    parser_classes = (MultiPartParser, FormParser)
+class HouseImageView(viewsets.ModelViewSet):
     queryset = HouseImage.objects.all()
     serializer_class = HouseImageSerializer
 
-    # def get(self, request):
-    #     # all_images = HouseImage.objects.all()
-    #     serializer = HouseImageSerializer(queryset, many=True)
-    #     return JsonResponse(serializer.data, safe=False)
+# class ImageView(viewsets.ModelViewSet):
+#     parser_classes = (MultiPartParser, FormParser)
+#     queryset = HouseImage.objects.all()
+#     serializer_class = HouseImageSerializer
 
-    def post(self, request, *args, **kwargs):
-        property_id = request.data['property_place']
+#     def get(self, request):
+#         # all_images = HouseImage.objects.all()
+#         serializer = HouseImageSerializer(queryset, many=True)
+#         return JsonResponse(serializer.data, safe=False)
 
-        # converts querydict to original dict
-        images = dict((request.data).lists())['image']
-        flag = 1
-        arr = []
-        for img_name in images:
-            modified_data = modify_input_for_multiple_files(property_id,
-                                                            img_name)
-            file_serializer = HouseImageSerializer(data=modified_data)
-            if file_serializer.is_valid():
-                file_serializer.save()
-                arr.append(file_serializer.data)
-            else:
-                flag = 0
+#     def post(self, request, *args, **kwargs):
+#         property_id = request.data['property_place']
 
-        if flag == 1:
-            return Response(arr, status=status.HTTP_201_CREATED)
-        else:
-            return Response(arr, status=status.HTTP_400_BAD_REQUEST)
+#         # converts querydict to original dict
+#         images = dict((request.data).lists())['image']
+#         flag = 1
+#         arr = []
+#         for img_name in images:
+#             modified_data = modify_input_for_multiple_files(property_id,
+#                                                             img_name)
+#             file_serializer = HouseImageSerializer(data=modified_data)
+#             if file_serializer.is_valid():
+#                 file_serializer.save()
+#                 arr.append(file_serializer.data)
+#             else:
+#                 flag = 0
+
+#         if flag == 1:
+#             return Response(arr, status=status.HTTP_201_CREATED)
+#         else:
+#             return Response(arr, status=status.HTTP_400_BAD_REQUEST)

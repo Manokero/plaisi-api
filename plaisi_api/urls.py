@@ -17,10 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.views import LoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('apps.place_rent.urls'))
+    path('api/', include('apps.place_rent.urls')),
+    # TODO Improve this way to log in 
+    path('login/', LoginView.as_view(template_name='registration/login.html'), name='login')
 ]
 
 if settings.DEBUG:
