@@ -1,6 +1,7 @@
 *.pyc# Created by https://www.gitignore.io
 
 .vscode
+media/*
 
 ### OSX ###
 .DS_Store
