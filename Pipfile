@@ -15,6 +15,9 @@ sqlparse = "==0.3.0"
 Django = "==2.2.3"
 pillow = "*"
 django-rest-auth = "*"
+django-cors-headers = "*"
+django-allauth = "*"
+oauthlib = "*"
 
 [requires]
 python_version = "3.6"

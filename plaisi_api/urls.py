@@ -22,7 +22,7 @@ from rest_framework.authtoken import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('apps.place_rent.urls')),
-    path('rest-auth-token/', views.obtain_auth_token))
+    path('rest-auth-token/', views.obtain_auth_token)
 ]
 
 if settings.DEBUG:
