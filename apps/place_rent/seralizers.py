@@ -8,7 +8,7 @@ class HouseRentSerializer(serializers.ModelSerializer):
             'id','title', 'description',
             'bedroom_number', 'bathroom_number',
             'construcction_size', 'solar_size',
-            'price', 'city'
+            'price', 'city', 'propietary'
         )
 
 class HouseImageSerializer(serializers.ModelSerializer):

@@ -15,9 +15,10 @@ class Propietary(models.Model):
     )
     phone = models.CharField(max_length=20)
     address = models.TextField()
-    province = model.CharField(
+    province = models.CharField(
         choices=cities_dr.as_tuple(),
-        default=cities_dr.get_default()
+        default=cities_dr.get_default(),
+        max_length=4
     )
 
 
