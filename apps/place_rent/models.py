@@ -1,18 +1,9 @@
 from django.db import models
 from .helpers import user_house_directory_path
-
+from plaisi_api.bus.enums import *
 # Create your models here.
 
-# TODO: Add Enums in a diferrent file
-SD = 'SD'
-SC = 'SC'
-SA = 'SA'
-
-CITIES_DOMINICAN_REPUBLIC = [
-    (SD, 'Santo Domingo'),
-    (SC, 'San Cristobal'),
-    (SA, 'Santiago'),
-]
+cities_dr = EnumProvincesDominicanRepublic
 
 class HouseRent(models.Model):
     title = models.CharField(max_length=50)
@@ -22,7 +13,7 @@ class HouseRent(models.Model):
     construcction_size = models.IntegerField(blank=True, null=True)
     solar_size = models.IntegerField(blank=True, null=True)
     price = models.FloatField()
-    city = models.CharField(max_length=4, choices=CITIES_DOMINICAN_REPUBLIC, default=SD)
+    city = models.CharField(max_length=4, choices=cities_dr.as_tuple(), default=cities_dr.get_default())
     deleted = models.BooleanField(default=False)
     # propietary = models.ForeignKey(null=False)
     

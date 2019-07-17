@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'rest_framework',
     'rest_framework.authtoken',
-    'apps.place_rent'
+    'apps.place_rent',
+    'apps.propietary'
 ]
 
 MIDDLEWARE = [
@@ -154,3 +155,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#
+
+CSRF_COOKIE_NAME = 'csrftoken'
+
+ACCOUNT_UNIQUE_EMAIL = True
