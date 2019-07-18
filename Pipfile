@@ -18,6 +18,7 @@ django-rest-auth = "*"
 django-cors-headers = "*"
 django-allauth = "*"
 oauthlib = "*"
+django-filter = "*"
 
 [requires]
 python_version = "3.6"

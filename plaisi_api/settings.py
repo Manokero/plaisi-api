@@ -47,9 +47,12 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'rest_framework',
     'rest_framework.authtoken',
-    'apps.place_rent'
+    'django_filters',
+    'apps.place_rent',
+    'apps.propietary'
 ]
 
+SITE_ID = 1
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -89,8 +92,13 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny', # TODO dont forget this
+        # 'rest_framework.permissions.IsAuthenticated',
     )
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 # Database
@@ -154,3 +162,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#
+
+CSRF_COOKIE_NAME = 'csrftoken'
+
+ACCOUNT_UNIQUE_EMAIL = True

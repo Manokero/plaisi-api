@@ -1,18 +1,11 @@
 from django.db import models
 from .helpers import user_house_directory_path
-
+from plaisi_api.bus.enums import *
+from apps.propietary.models import Propietary
 # Create your models here.
 
-# TODO: Add Enums in a diferrent file
-SD = 'SD'
-SC = 'SC'
-SA = 'SA'
+cities_dr = EnumProvincesDominicanRepublic
 
-CITIES_DOMINICAN_REPUBLIC = [
-    (SD, 'Santo Domingo'),
-    (SC, 'San Cristobal'),
-    (SA, 'Santiago'),
-]
 
 class HouseRent(models.Model):
     title = models.CharField(max_length=50)
@@ -22,15 +15,17 @@ class HouseRent(models.Model):
     construcction_size = models.IntegerField(blank=True, null=True)
     solar_size = models.IntegerField(blank=True, null=True)
     price = models.FloatField()
-    city = models.CharField(max_length=4, choices=CITIES_DOMINICAN_REPUBLIC, default=SD)
+    city = models.CharField(max_length=4, choices=cities_dr.as_tuple(), default=cities_dr.get_default())
     deleted = models.BooleanField(default=False)
-    # propietary = models.ForeignKey(null=False)
+    propietary = models.ForeignKey(Propietary, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.title
 
+
 class HouseImage(models.Model):
-    property_place = models.ForeignKey(HouseRent, null=False, 
-        default=1, on_delete=models.DO_NOTHING)
+    property_place = models.ForeignKey(HouseRent, null=True,
+            on_delete=models.DO_NOTHING)
     image = models.ImageField(upload_to=user_house_directory_path)
+    description = models.TextField(blank=True, null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
