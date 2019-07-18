@@ -1,4 +1,4 @@
-from rest_framework import generics, viewsets, mixins
+from rest_framework import generics, viewsets, mixins, permissions
 from .models import Propietary, PropietaryLegalDoc
 from .serializers import (
         PropietarySerializerWithUser, PropietaryLegalDocSerializer,
@@ -15,4 +15,14 @@ class PropietaryViewSet(viewsets.ModelViewSet):
 class UserView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer 
-    # TODO dont allow list, retrive, delete
+    
+    def get_permissions(self):
+        """
+        Instantiates and returns the list of permissions that this view requires.
+        """
+        if self.action == 'create' or self.action == 'update':
+            permission_classes = [permissions.IsAuthenticated]
+        else:
+            permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
+
+        return [permission() for permission in permission_classes]
