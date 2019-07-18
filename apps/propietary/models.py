@@ -3,8 +3,6 @@ from django.conf import settings
 from .helpers import propietary_legal_documents_path
 from plaisi_api.bus.enums import EnumProvincesDominicanRepublic
 
-# Create your models here.
-
 cities_dr = EnumProvincesDominicanRepublic
 
 

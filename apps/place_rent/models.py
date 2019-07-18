@@ -6,6 +6,7 @@ from apps.propietary.models import Propietary
 
 cities_dr = EnumProvincesDominicanRepublic
 
+
 class HouseRent(models.Model):
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=1000)
@@ -20,6 +21,7 @@ class HouseRent(models.Model):
     
     def __str__(self):
         return self.title
+
 
 class HouseImage(models.Model):
     property_place = models.ForeignKey(HouseRent, null=True,

@@ -1,8 +1,8 @@
+from collections import OrderedDict
 from rest_framework import serializers
+import json
 from django.contrib.auth.models import User
 from .models import Propietary, PropietaryLegalDoc
-import json
-from collections import OrderedDict
 
 class PropietarySerializer(serializers.ModelSerializer):
 
@@ -31,6 +31,7 @@ class PropietaryLegalDocSerializer(serializers.ModelSerializer):
             'is_deleted', 'propietary'
         )
 
+
 class UserSerializer(serializers.ModelSerializer):
     propietary = PropietarySerializer(required=False, many=False)
     password = serializers.CharField(write_only=True)
@@ -39,7 +40,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = (
             'id', 'username', 'email', 'first_name', 'last_name', 'password',
-           'propietary', 'is_staff', 'is_superuser' # 'phone', 'address', 'province', 'propietary'
+           'propietary', 'is_staff', 'is_superuser'
         )
     
     def create(self, validated_data):
