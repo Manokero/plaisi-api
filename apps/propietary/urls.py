@@ -3,10 +3,10 @@ from . import viewsets
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register(r'house', viewsets.HouseRentView)
-router.register(r'houses', viewsets.HouseRentViewsetList)
-router.register(r'houseimages', viewsets.HouseImageView)
+router.register(r'propietaries', viewsets.PropietaryViewSet)
+router.register(r'userview', viewsets.UserView)
 
 urlpatterns = [
     path('', include(router.urls)),
+    # path('userview/', viewsets.UserView.as_view())
 ]

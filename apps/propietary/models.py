@@ -14,12 +14,15 @@ class Propietary(models.Model):
         on_delete=models.CASCADE
     )
     phone = models.CharField(max_length=20)
-    address = models.TextField()
+    address = models.TextField(blank=True, null=True)
     province = models.CharField(
         choices=cities_dr.as_tuple(),
         default=cities_dr.get_default(),
         max_length=4
     )
+
+    def __str__(self):
+        return self.user.username
 
 
 class PropietaryLegalDoc(models.Model):
