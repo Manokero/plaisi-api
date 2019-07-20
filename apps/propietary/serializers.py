@@ -45,8 +45,12 @@ class UserSerializer(serializers.ModelSerializer):
     
     def create(self, validated_data):
         propietary_data = validated_data.pop('propietary', OrderedDict())
+        is_active = validated_data.get('is_active')
         validated_data['is_superuser'] = False
         validated_data['is_staff'] = False
+        # If is_active attr inst sended, the default is True
+        validated_data['is_active'] = True if is_active == None else is_active
+        
         user = super(UserSerializer, self).create(validated_data)
         propietary_data = json.loads(json.dumps(propietary_data))
         user.propietary_set.create(**propietary_data)
