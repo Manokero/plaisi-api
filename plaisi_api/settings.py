@@ -38,21 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
     'corsheaders',
-    'rest_auth',
-    'rest_auth.registration',
     'rest_framework',
-    'rest_framework.authtoken',
+    'rest_framework_simplejwt',
     'django_filters',
     'apps.place_rent',
     'apps.propietary'
 ]
 
-SITE_ID = 1
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -92,14 +85,12 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.AllowAny', # TODO dont forget this
-        # 'rest_framework.permissions.IsAuthenticated',
-    )
-}
-
-REST_FRAMEWORK = {
+        # 'rest_framework.permissions.AllowAny', # TODO dont forget this
+        'rest_framework.permissions.IsAuthenticated',
+    ),
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
+
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -168,3 +159,5 @@ STATIC_URL = '/static/'
 CSRF_COOKIE_NAME = 'csrftoken'
 
 ACCOUNT_UNIQUE_EMAIL = True
+
+REST_USE_JWT = True
