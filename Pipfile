@@ -19,6 +19,7 @@ django-cors-headers = "*"
 django-allauth = "*"
 oauthlib = "*"
 django-filter = "*"
+djangorestframework-simplejwt = "*"
 
 [requires]
 python_version = "3.6"
