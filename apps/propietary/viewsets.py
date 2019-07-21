@@ -23,6 +23,6 @@ class UserView(viewsets.ModelViewSet):
         if self.action == 'create' or self.action == 'update':
             permission_classes = [permissions.IsAuthenticated]
         else:
-            permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
-
+            permission_classes = [permissions.IsAuthenticated&permissions.IsAdminUser]
+            
         return [permission() for permission in permission_classes]
