@@ -18,7 +18,7 @@ class ProprietarySerializerWithUser(serializers.ModelSerializer):
     class Meta:
         model = Proprietary
         fields = (
-            'phone', 'address', 'province', 'user'
+            'id' ,'phone', 'address', 'province', 'user'
         )
 
 
