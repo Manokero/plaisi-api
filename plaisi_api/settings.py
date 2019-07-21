@@ -168,3 +168,8 @@ CSRF_COOKIE_NAME = 'csrftoken'
 ACCOUNT_UNIQUE_EMAIL = True
 
 REST_USE_JWT = True
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+    'http://plaisi.com',
+)
