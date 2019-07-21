@@ -7,7 +7,7 @@ from .serializers import (
 from django.contrib.auth.models import User
 
 
-class PropietaryViewSet(viewsets.ModelViewSet):
+class PropietaryViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = PropietarySerializerWithUser
     queryset = Propietary.objects.filter(user__is_active=True)
 
