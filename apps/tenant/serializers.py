@@ -5,6 +5,15 @@ import json
 from .models import Tenant
 
 
+class TenantSerializerWithUser(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Tenant 
+        fields = (
+            'id','phone', 'address', 'province', 'user'
+        )
+
+
 class TenantSerializer(serializers.ModelSerializer):
     
     class Meta:

@@ -1,11 +1,11 @@
 from rest_framework import viewsets, mixins, permissions
 from .models import Tenant
-from .serializers import TenantSerializer, UserSerializer
+from .serializers import TenantSerializer, TenantSerializerWithUser, UserSerializer
 from django.contrib.auth.models import User
 
 
 class TenantViewset(viewsets.ReadOnlyModelViewSet):
-    serializer_class = TenantSerializer
+    serializer_class = TenantSerializerWithUser
     queryset = Tenant.objects.all()
 
 
