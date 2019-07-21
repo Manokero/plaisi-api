@@ -14,7 +14,7 @@ class HouseRentView(viewsets.ModelViewSet):
 class HouseRentViewsetList(viewsets.ReadOnlyModelViewSet):
     queryset = House.objects.filter(
         deleted=False,
-        propietary__user__is_active=True
+        proprietary__user__is_active=True
     )
     serializer_class = HouseSerializer
     filterset_class = HouseFilter

@@ -1,7 +1,7 @@
 from django.db import models
 from .helpers import user_house_directory_path
 from plaisi_api.bus.enums import *
-from apps.propietary.models import Propietary
+from apps.proprietary.models import Proprietary
 from apps.tenant.models import Tenant
 
 cities_dr = EnumProvincesDominicanRepublic
@@ -17,7 +17,7 @@ class House(models.Model):
     price = models.FloatField()
     city = models.CharField(max_length=4, choices=cities_dr.as_tuple(), default=cities_dr.get_default())
     deleted = models.BooleanField(default=False)
-    propietary = models.ForeignKey(Propietary, on_delete=models.CASCADE)
+    proprietary = models.ForeignKey(Proprietary, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.title
