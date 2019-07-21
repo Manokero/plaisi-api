@@ -3,7 +3,7 @@ from django.conf import settings
 from plaisi_api.bus.enums import EnumProvincesDominicanRepublic
 
 cities_dr = EnumProvincesDominicanRepublic
-# Create your models here.
+
 
 class Tenant(models.Model):
     user = models.ForeignKey(
