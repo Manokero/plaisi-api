@@ -40,18 +40,18 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = (
             'id', 'username', 'email', 'first_name', 'last_name', 'password',
-           'propietary', 'is_staff', 'is_superuser'
+           'propietary',
         )
     
     def create(self, validated_data):
         propietary_data = validated_data.pop('propietary', OrderedDict())
-        is_active = validated_data.get('is_active')
         validated_data['is_superuser'] = False
         validated_data['is_staff'] = False
-        # If is_active attr inst sended, the default is True
-        validated_data['is_active'] = True if is_active == None else is_active
         
         user = super(UserSerializer, self).create(validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
+
         propietary_data = json.loads(json.dumps(propietary_data))
         user.propietary_set.create(**propietary_data)
 
