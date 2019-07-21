@@ -42,8 +42,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'django_filters',
-    'apps.place_rent',
-    'apps.propietary'
+    'apps.house_rent',
+    'apps.propietary',
+    'apps.tenant'
 ]
 
 MIDDLEWARE = [

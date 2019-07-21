@@ -1,22 +1,22 @@
 from rest_framework import viewsets
-from .models import HouseImage, HouseRent
+from .models import HouseImage, House, HouseRent
 from .serializers import (
-        HouseImageSerializer, HouseRentSerializer
+        HouseImageSerializer, HouseSerializer
     )
 from .filters import HouseFilter
 
 
 class HouseRentView(viewsets.ModelViewSet):
-    queryset = HouseRent.objects.all()
-    serializer_class = HouseRentSerializer
+    queryset = House.objects.all()
+    serializer_class = HouseSerializer
 
 
 class HouseRentViewsetList(viewsets.ReadOnlyModelViewSet):
-    queryset = HouseRent.objects.filter(
+    queryset = House.objects.filter(
         deleted=False,
         propietary__user__is_active=True
     )
-    serializer_class = HouseRentSerializer
+    serializer_class = HouseSerializer
     filterset_class = HouseFilter
 
 

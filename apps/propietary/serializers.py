@@ -52,8 +52,11 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
 
-        propietary_data = json.loads(json.dumps(propietary_data))
-        user.propietary_set.create(**propietary_data)
+        try:
+            propietary_data = json.loads(json.dumps(propietary_data))
+            user.propietary_set.create(**propietary_data)
+        except:
+            user.delete()
 
         return user
     

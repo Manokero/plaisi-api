@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from .models import HouseImage, HouseRent
+from .models import HouseImage, House
 
-class HouseRentSerializer(serializers.ModelSerializer):
+class HouseSerializer(serializers.ModelSerializer):
     class Meta:
-        model = HouseRent
+        model = House
         fields = (
             'id','title', 'description',
             'bedroom_number', 'bathroom_number',
