@@ -2,49 +2,49 @@ from collections import OrderedDict
 from rest_framework import serializers
 import json
 from django.contrib.auth.models import User
-from .models import Propietary, PropietaryLegalDoc
+from .models import Proprietary, ProprietaryLegalDoc
 
-class PropietarySerializer(serializers.ModelSerializer):
+class ProprietarySerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Propietary
+        model = Proprietary
         fields = (
             'phone', 'address', 'province'
         )
 
 
-class PropietarySerializerWithUser(serializers.ModelSerializer):
+class ProprietarySerializerWithUser(serializers.ModelSerializer):
 
     class Meta:
-        model = Propietary
+        model = Proprietary
         fields = (
-            'phone', 'address', 'province', 'user'
+            'id' ,'phone', 'address', 'province', 'user'
         )
 
 
-class PropietaryLegalDocSerializer(serializers.ModelSerializer):
+class ProprietaryLegalDocSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = PropietaryLegalDoc
+        model = ProprietaryLegalDoc
         fields = (
             'document', 'name', 'description',
-            'is_deleted', 'propietary'
+            'is_deleted', 'proprietary'
         )
 
 
 class UserSerializer(serializers.ModelSerializer):
-    propietary = PropietarySerializer(required=False, many=False)
+    proprietary = ProprietarySerializer(required=False, many=False)
     password = serializers.CharField(write_only=True)
 
     class Meta:
         model = User
         fields = (
             'id', 'username', 'email', 'first_name', 'last_name', 'password',
-           'propietary',
+           'proprietary',
         )
     
     def create(self, validated_data):
-        propietary_data = validated_data.pop('propietary', OrderedDict())
+        proprietary_data = validated_data.pop('proprietary', OrderedDict())
         validated_data['is_superuser'] = False
         validated_data['is_staff'] = False
         
@@ -53,8 +53,8 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
 
         try:
-            propietary_data = json.loads(json.dumps(propietary_data))
-            user.propietary_set.create(**propietary_data)
+            proprietary_data = json.loads(json.dumps(proprietary_data))
+            user.proprietary_set.create(**proprietary_data)
         except:
             user.delete()
 
@@ -62,14 +62,14 @@ class UserSerializer(serializers.ModelSerializer):
     
     def update(self, instance, validated_data):
         validated_data.pop('password', '')
-        propietary_data = validated_data.pop('propietary', OrderedDict())
-        propietary_data = json.loads(json.dumps(propietary_data))   
+        proprietary_data = validated_data.pop('proprietary', OrderedDict())
+        proprietary_data = json.loads(json.dumps(proprietary_data))   
         validated_data['is_superuser'] = False
         validated_data['is_staff'] = False
 
         user = super(UserSerializer, self).update(
             instance, validated_data
         )
-        user.propietary_set.update(**propietary_data)
+        user.proprietary_set.update(**proprietary_data)
 
         return user

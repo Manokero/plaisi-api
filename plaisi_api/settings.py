@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'django_filters',
     'apps.house_rent',
-    'apps.propietary',
+    'apps.proprietary',
     'apps.tenant'
 ]
 

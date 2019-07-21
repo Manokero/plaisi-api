@@ -33,7 +33,7 @@ class UserSerializer(serializers.ModelSerializer):
             'id', 'username', 'email', 'first_name', 'last_name', 'password',
             'tenant',
         )
-    # TODO: have in mind the Propietary User is alse a tenant
+    # TODO: have in mind the Proprietary User is alse a tenant
     def create(self, validated_data):
         tenant_data = validated_data.pop('tenant', OrderedDict())
         username = validated_data['username']

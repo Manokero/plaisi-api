@@ -1,15 +1,15 @@
 from rest_framework import viewsets, mixins, permissions
-from .models import Propietary, PropietaryLegalDoc
+from .models import Proprietary, ProprietaryLegalDoc
 from .serializers import (
-        PropietarySerializerWithUser, PropietaryLegalDocSerializer,
+        ProprietarySerializerWithUser, ProprietaryLegalDocSerializer,
         UserSerializer
     )
 from django.contrib.auth.models import User
 
 
-class PropietaryViewSet(viewsets.ReadOnlyModelViewSet):
-    serializer_class = PropietarySerializerWithUser
-    queryset = Propietary.objects.filter(user__is_active=True)
+class ProprietaryViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = ProprietarySerializerWithUser
+    queryset = Proprietary.objects.filter(user__is_active=True)
 
 
 class UserView(viewsets.ModelViewSet):
