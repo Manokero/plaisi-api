@@ -2,6 +2,7 @@
 
 .vscode
 media/*
+!media/.gitkeep 
 
 ### OSX ###
 .DS_Store
