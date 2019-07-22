@@ -42,8 +42,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'django_filters',
-    'apps.place_rent',
-    'apps.propietary'
+    'apps.house_rent',
+    'apps.proprietary',
+    'apps.tenant'
 ]
 
 MIDDLEWARE = [
@@ -167,3 +168,8 @@ CSRF_COOKIE_NAME = 'csrftoken'
 ACCOUNT_UNIQUE_EMAIL = True
 
 REST_USE_JWT = True
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+    'http://plaisi.com',
+)
