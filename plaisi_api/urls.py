@@ -18,9 +18,9 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
     TokenRefreshView,
 )
+from packages.customViewToken import MyTokenObtainPairView
 
 
 urlpatterns = [
@@ -28,7 +28,7 @@ urlpatterns = [
     path('api/', include('apps.house_rent.urls')),
     path('api/', include('apps.proprietary.urls')),
     path('api/', include('apps.tenant.urls')),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
 
