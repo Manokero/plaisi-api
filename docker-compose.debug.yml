@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  plaisi_api:
+    image: plaisi_api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000

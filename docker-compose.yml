@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  plaisi_api:
+    image: plaisi_api
+    build: .
+    ports:
+      - 8000:8000
