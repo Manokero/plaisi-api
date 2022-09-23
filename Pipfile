@@ -8,7 +8,7 @@ verify_ssl = true
 [packages]
 djangorestframework = "==3.9.4"
 mysql-connector-python = "==8.0.16"
-protobuf = "==3.9.0"
+protobuf = "==3.18.3"
 pytz = "==2019.1"
 six = "==1.12.0"
 sqlparse = "==0.3.0"
